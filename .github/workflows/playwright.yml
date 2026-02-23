@@ -7,16 +7,14 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - name: Install Dependencies
+        run: npm install
 
-      - run: npm install
-
-      - uses: microsoft/playwright-github-action@v1
-
-      - run: node sumTables.js
+      - name: Run Script
+        run: node sumTables.js
