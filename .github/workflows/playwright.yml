@@ -1,4 +1,4 @@
-name: QA Automation - 23f2003092@ds.study.iitm.ac.in
+name: QA Automation
 
 on:
   push:
@@ -13,8 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup for 23f2003092@ds.study.iitm.ac.in
+        run: echo "Starting QA job"
+
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Script
+      - name: Run Playwright Script
         run: node sumTables.js
